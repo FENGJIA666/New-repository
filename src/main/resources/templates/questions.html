@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>题目列表</title>
+</head>
+<body>
+<h1>所有题目</h1>
+
+<table border="1" cellpadding="8">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>题目</th>
+    <th>A</th>
+    <th>B</th>
+    <th>C</th>
+    <th>D</th>
+    <th>正确答案</th>
+    <th>解析</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="q : ${questions}">
+    <td th:text="${q.id}"></td>
+    <td th:text="${q.title}"></td>
+    <td th:text="${q.optionA}"></td>
+    <td th:text="${q.optionB}"></td>
+    <td th:text="${q.optionC}"></td>
+    <td th:text="${q.optionD}"></td>
+    <td th:text="${q.correctAnswer}"></td>
+    <td th:text="${q.explanation}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+<a href="/upload">返回上传页面</a>
+
+<a href="/">回主页</a>
+
+
+</body>
+</html>

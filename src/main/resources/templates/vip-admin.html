@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>VIP 管理后台</title>
+</head>
+<body>
+<h2>🎫 VIP 管理后台</h2>
+
+<form th:action="@{/admin/vip/add}" method="post">
+  <input type="text" name="newCode" placeholder="新增 VIP 码" required/>
+  <button type="submit">添加</button>
+</form>
+
+<h3>已有 VIP 码列表</h3>
+<table border="1">
+  <tr>
+    <th>VIP 码</th>
+    <th>是否已使用</th>
+  </tr>
+  <tr th:each="c : ${codes}">
+    <td th:text="${c.code}"></td>
+    <td th:text="${c.used}"></td>
+  </tr>
+</table>
+
+<a href="/">回主页</a>
+
+
+</body>
+</html>

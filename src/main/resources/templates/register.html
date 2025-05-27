@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>注册</title>
+</head>
+<body>
+<h1>用户注册</h1>
+
+<form th:action="@{/register}" method="post">
+  <label>用户名：</label><br>
+  <input type="text" name="username" required><br><br>
+
+  <label>密码：</label><br>
+  <input type="password" name="password" required><br><br>
+
+  <!-- ✅ VIP 码设为可填可不填 -->
+  <label>VIP 码（可选）：</label><br>
+  <input type="text" name="vipCode"><br><br>
+
+  <button type="submit">注册</button>
+</form>
+
+<div th:if="${param.error}">
+  <p style="color:red;">用户名已存在</p>
+</div>
+
+<br>
+<a href="/login">已有账号？点击登录</a>
+
+<a href="/">回主页</a>
+
+
+</body>
+</html>

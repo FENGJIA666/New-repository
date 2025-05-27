@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>题库网站导航</title>
+</head>
+<body>
+<h2>📘 欢迎访问题库系统</h2>
+
+<h3>🧑‍🎓 用户功能</h3>
+<ul>
+  <li><a th:href="@{/register}">📝 注册</a></li>
+  <li><a th:href="@{/login}">🔐 登录</a></li>
+  <li><a th:href="@{/vip-check}">🎫 VIP 验证</a></li>
+  <li><a th:href="@{/questions}">📋 查看题库</a></li>
+  <li><a th:href="@{/wrong-questions}">❌ 错题本</a></li>
+</ul>
+
+<h3>🛠 管理员功能</h3>
+<ul>
+  <li><a th:href="@{/admin/questions}">🗂 管理题目</a></li>
+  <li><a th:href="@{/upload}">📤 上传题目</a></li>
+  <li><a th:href="@{/admin/vip}">🎫 VIP 管理后台</a></li>
+</ul>
+
+<h3>🛢 数据库控制台</h3>
+<ul>
+  <li><a th:href="@{/h2-console}">💻 H2 控制台</a>（JDBC URL: jdbc:h2:mem:testdb）</li>
+</ul>
+
+</body>
+</html>

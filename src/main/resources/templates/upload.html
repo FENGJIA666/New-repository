@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>上传题目</title>
+</head>
+<body>
+<h1>上传题目</h1>
+
+<!-- 显示上传成功提示 -->
+<div th:if="${param.success}">
+  <p style="color: green;">题目上传成功！</p>
+</div>
+
+<form th:action="@{/upload}" method="post">
+  <label>题目：</label><br>
+  <input type="text" name="title" required><br><br>
+
+  <label>A：</label><br>
+  <input type="text" name="optionA" required><br><br>
+
+  <label>B：</label><br>
+  <input type="text" name="optionB" required><br><br>
+
+  <label>C：</label><br>
+  <input type="text" name="optionC" required><br><br>
+
+  <label>D：</label><br>
+  <input type="text" name="optionD" required><br><br>
+
+  <label>正确答案（例如 A）：</label><br>
+  <input type="text" name="correctAnswer" required><br><br>
+
+  <label>解析：</label><br>
+  <textarea name="explanation" rows="4" cols="50"></textarea><br><br>
+
+  <button type="submit">提交题目</button>
+</form>
+<a href="/questions">📄 查看题目列表</a>
+<br/>
+<a href="/upload">➕ 再上传一题</a>
+<br/>
+
+<a href="/">回主页</a>
+
+
+
+
+
+</body>
+</html>

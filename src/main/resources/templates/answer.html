@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>答题页面</title>
+</head>
+<body>
+<h1>答题</h1>
+
+<div th:if="${question != null}">
+  <form th:action="@{/answer}" method="post">
+    <input type="hidden" name="id" th:value="${question.id}"/>
+
+    <p><b th:text="${question.title}"></b></p>
+
+    <label><input type="radio" name="userAnswer" value="A" required> A. <span th:text="${question.optionA}"></span></label><br>
+    <label><input type="radio" name="userAnswer" value="B"> B. <span th:text="${question.optionB}"></span></label><br>
+    <label><input type="radio" name="userAnswer" value="C"> C. <span th:text="${question.optionC}"></span></label><br>
+    <label><input type="radio" name="userAnswer" value="D"> D. <span th:text="${question.optionD}"></span></label><br><br>
+
+    <button type="submit">提交答案</button>
+  </form>
+</div>
+
+<!-- 答题结果 -->
+<div th:if="${result != null}">
+  <p style="color: blue;" th:text="${result}"></p>
+  <p>正确答案是：<b th:text="${correctAnswer}"></b></p>
+  <p>解析：<span th:text="${explanation}"></span></p>
+</div>
+
+<br>
+<a href="/questions">返回题目列表</a>
+
+<a href="/">回主页</a>
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>VIP 验证</title>
+</head>
+<body>
+<h2>请输入 VIP 验证码以使用题库</h2>
+
+<form th:action="@{/vip-check}" method="post">
+  <input type="text" name="vipCode" placeholder="VIP 验证码" required>
+  <button type="submit">提交</button>
+</form>
+
+<div th:if="${param.error}">
+  <p style="color:red;">VIP 验证失败</p>
+</div>
+
+<a href="/logout">退出登录</a>
+
+<a href="/">回主页</a>
+
+
+</body>
+</html>

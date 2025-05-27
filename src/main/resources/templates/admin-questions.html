@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>题目管理（管理员）</title>
+</head>
+<body>
+<h2>📚 管理所有题目</h2>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>题目</th>
+    <th>选项</th>
+    <th>答案</th>
+    <th>操作</th>
+  </tr>
+  <tr th:each="q : ${questions}">
+    <td th:text="${q.id}"></td>
+    <td th:text="${q.title}"></td>
+    <td>
+      <p th:text="'A. ' + ${q.optionA}"></p>
+      <p th:text="'B. ' + ${q.optionB}"></p>
+      <p th:text="'C. ' + ${q.optionC}"></p>
+      <p th:text="'D. ' + ${q.optionD}"></p>
+    </td>
+    <td th:text="${q.correctAnswer}"></td>
+    <td>
+      <form th:action="@{/admin/questions/delete}" method="post">
+        <input type="hidden" name="id" th:value="${q.id}" />
+        <button type="submit">🗑 删除</button>
+      </form>
+    </td>
+  </tr>
+</table>
+
+<br>
+<a href="/">回主页</a>
+
+
+</body>
+</html>
