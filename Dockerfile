@@ -1,12 +1,17 @@
-# 第一阶段：使用 Maven 构建应用
-FROM eclipse-temurin:17-jdk as build
-WORKDIR /app
-COPY . .
-RUN chmod +x ./mvnw && ./mvnw clean package -DskipTests
+FROM maven:3.8.7-openjdk-17-slim AS build
 
-# 第二阶段：运行构建好的 JAR 包
-FROM eclipse-temurin:17-jdk
 WORKDIR /app
+
+COPY . .
+
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17-slim
+
+WORKDIR /app
+
 COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+CMD ["java", "-jar", "app.jar"]
