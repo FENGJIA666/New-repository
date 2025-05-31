@@ -5,29 +5,20 @@
   <title>错题本</title>
 </head>
 <body>
-<h1>错题本</h1>
-
-<table border="1" cellpadding="8">
+<h2>❌ 错题记录</h2>
+<table border="1">
   <tr>
+    <th>ID</th>
     <th>题目</th>
     <th>你的答案</th>
     <th>正确答案</th>
   </tr>
   <tr th:each="w : ${wrongs}">
+    <td th:text="${w.id}"></td>
     <td th:text="${w.title}"></td>
     <td th:text="${w.userAnswer}"></td>
     <td th:text="${w.correctAnswer}"></td>
   </tr>
 </table>
-<form th:action="@{/wrong-questions/clear}" method="post" style="margin-top: 20px;">
-  <button type="submit" onclick="return confirm('你确定要清空错题本吗？')">清空错题本</button>
-</form>
-
-<br>
-<a href="/questions">返回题库</a>
-
-<a href="/">回主页</a>
-
-
 </body>
 </html>

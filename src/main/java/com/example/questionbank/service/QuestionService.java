@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class QuestionService {
@@ -51,5 +52,14 @@ public class QuestionService {
     public void deleteQuestionById(Long id) {
         questionRepository.deleteById(id);
     }
+    public Question getRandomQuestion() {
+        List<Question> all = questionRepository.findAll();
+        if (all.isEmpty()) return null;
+
+        Random random = new Random();
+        return all.get(random.nextInt(all.size()));
+    }
+
+
 
 }

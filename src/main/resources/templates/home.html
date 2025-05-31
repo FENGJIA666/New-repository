@@ -3,30 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <title>题库网站导航</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 30px;
+    }
+    h2, h3 {
+      color: #2c3e50;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    a, button {
+      text-decoration: none;
+      color: white;
+      background-color: #3498db;
+      padding: 8px 16px;
+      border-radius: 4px;
+      display: inline-block;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    a:hover, button:hover {
+      background-color: #2980b9;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+  </style>
 </head>
 <body>
+
 <h2>📘 欢迎访问题库系统</h2>
 
-<h3>🧑‍🎓 用户功能</h3>
-<ul>
-  <li><a th:href="@{/register}">📝 注册</a></li>
-  <li><a th:href="@{/login}">🔐 登录</a></li>
-  <li><a th:href="@{/vip-check}">🎫 VIP 验证</a></li>
-  <li><a th:href="@{/questions}">📋 查看题库</a></li>
-  <li><a th:href="@{/wrong-questions}">❌ 错题本</a></li>
-</ul>
+<div class="section">
+  <h3>🧑‍🎓 用户功能</h3>
+  <ul>
+    <li><a th:href="@{/register}">📝 注册</a></li>
+    <li><a th:href="@{/login}">🔐 登录</a></li>
+    <li><a th:href="@{/vip-check}">🎫 VIP 验证</a></li>
+    <li><a th:href="@{/questions}">📋 查看题库</a></li>
+    <li><a th:href="@{/wrong-questions}">❌ 错题本</a></li>
+  </ul>
+  <form action="/start" method="get">
+    <button type="submit">🚀 开始做题</button>
+  </form>
 
-<h3>🛠 管理员功能</h3>
-<ul>
-  <li><a th:href="@{/admin/questions}">🗂 管理题目</a></li>
-  <li><a th:href="@{/upload}">📤 上传题目</a></li>
-  <li><a th:href="@{/admin/vip}">🎫 VIP 管理后台</a></li>
-</ul>
+</div>
 
-<h3>🛢 数据库控制台</h3>
-<ul>
-  <li><a th:href="@{/h2-console}">💻 H2 控制台</a>（JDBC URL: jdbc:h2:mem:testdb）</li>
-</ul>
+<div class="section">
+  <h3>🛠 管理员功能</h3>
+  <ul>
+    <li><a th:href="@{/admin/questions}">🗂 管理题目</a></li>
+    <li><a th:href="@{/upload}">📤 上传题目</a></li>
+    <li><a th:href="@{/admin/vip}">🎫 VIP 管理后台</a></li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>🛢 数据库控制台</h3>
+  <ul>
+    <li><a th:href="@{/h2-console}">💻 H2 控制台</a>（JDBC URL: jdbc:h2:mem:testdb）</li>
+  </ul>
+</div>
 
 </body>
 </html>

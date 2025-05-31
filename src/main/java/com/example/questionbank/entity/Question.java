@@ -9,15 +9,14 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;            // 题目标题
-    private String optionA;
-    private String optionB;
-    private String optionC;
-    private String optionD;
-    private String correctAnswer;   // 正确答案，例如 "A"
-    private String explanation;     // 题目解析
+    private String title;
+    private String correctAnswer;
+    private String explanation;
 
-    // Getter 和 Setter 方法（用于访问字段）
+    // 新增字段：PDF 路径
+    private String pdfPath;
+
+    // Getter & Setter
     public Long getId() {
         return id;
     }
@@ -32,38 +31,6 @@ public class Question {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getOptionA() {
-        return optionA;
-    }
-
-    public void setOptionA(String optionA) {
-        this.optionA = optionA;
-    }
-
-    public String getOptionB() {
-        return optionB;
-    }
-
-    public void setOptionB(String optionB) {
-        this.optionB = optionB;
-    }
-
-    public String getOptionC() {
-        return optionC;
-    }
-
-    public void setOptionC(String optionC) {
-        this.optionC = optionC;
-    }
-
-    public String getOptionD() {
-        return optionD;
-    }
-
-    public void setOptionD(String optionD) {
-        this.optionD = optionD;
     }
 
     public String getCorrectAnswer() {
@@ -81,5 +48,12 @@ public class Question {
     public void setExplanation(String explanation) {
         this.explanation = explanation;
     }
-}
 
+    public String getPdfPath() {
+        return pdfPath;
+    }
+
+    public void setPdfPath(String pdfPath) {
+        this.pdfPath = pdfPath;
+    }
+}

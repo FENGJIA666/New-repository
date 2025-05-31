@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>开始答题</title>
+</head>
+<body>
+<h2>做题</h2>
+
+<div th:if="${question != null}">
+  <p><b>题目：</b><span th:text="${question.title}"></span></p>
+
+  <!-- 显示 PDF 文件 -->
+  <div th:if="${question.pdfPath != null}">
+    <h4>📄 相关 PDF 文件：</h4>
+    <iframe th:src="@{${question.pdfPath}}" width="100%" height="600px"></iframe>
+  </div>
+
+  <!-- 提交答案表单 -->
+  <form method="post" th:action="@{/submit-answer}">
+    <label for="userAnswer">你的答案：</label>
+    <input type="text" id="userAnswer" name="userAnswer" required />
+    <button type="submit">提交</button>
+  </form>
+
+  <!-- 显示答题结果 -->
+  <div th:if="${result != null}">
+    <h3 th:text="${result}"></h3>
+    <p><b>解析：</b><span th:text="${explanation}"></span></p>
+    <a href="/start">下一题</a>
+  </div>
+</div>
+
+<div th:if="${question == null}">
+  <p>没有题目可供作答。</p>
+</div>
+
+</body>
+</html>

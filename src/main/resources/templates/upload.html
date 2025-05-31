@@ -5,47 +5,40 @@
   <title>上传题目</title>
 </head>
 <body>
-<h1>上传题目</h1>
+<h2>上传题目 PDF 文件</h2>
+<form th:action="@{/uploadPdf}" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" required>
+  <button type="submit">提交 PDF</button>
+</form>
 
-<!-- 显示上传成功提示 -->
-<div th:if="${param.success}">
-  <p style="color: green;">题目上传成功！</p>
+<p th:if="${message}" th:text="${message}"></p>
+
+<div th:if="${pdfUrl}">
+  <h3>预览 PDF：</h3>
+  <iframe th:src="${pdfUrl}" width="100%" height="500px"></iframe>
 </div>
 
+<hr>
+
+<h2>录入题目信息</h2>
 <form th:action="@{/upload}" method="post">
   <label>题目：</label><br>
-  <input type="text" name="title" required><br><br>
+  <textarea name="title" rows="4" cols="50" required
+            th:text="${question.title}"></textarea><br><br>
 
-  <label>A：</label><br>
-  <input type="text" name="optionA" required><br><br>
-
-  <label>B：</label><br>
-  <input type="text" name="optionB" required><br><br>
-
-  <label>C：</label><br>
-  <input type="text" name="optionC" required><br><br>
-
-  <label>D：</label><br>
-  <input type="text" name="optionD" required><br><br>
-
-  <label>正确答案（例如 A）：</label><br>
-  <input type="text" name="correctAnswer" required><br><br>
+  <label>正确答案：</label><br>
+  <input type="text" name="correctAnswer" th:value="${question.correctAnswer}" required><br><br>
 
   <label>解析：</label><br>
-  <textarea name="explanation" rows="4" cols="50"></textarea><br><br>
+  <textarea name="explanation" rows="4" cols="50" required
+            th:text="${question.explanation}"></textarea><br><br>
 
-  <button type="submit">提交题目</button>
+  <label>PDF 文件路径：</label><br>
+  <input type="text" name="pdfPath" th:value="${pdfUrl}" readonly><br><br>
+
+  <button type="submit">提交题目信息</button>
 </form>
-<a href="/questions">📄 查看题目列表</a>
-<br/>
-<a href="/upload">➕ 再上传一题</a>
-<br/>
 
-<a href="/">回主页</a>
-
-
-
-
-
+<a href="/questions">返回题库</a>
 </body>
 </html>
